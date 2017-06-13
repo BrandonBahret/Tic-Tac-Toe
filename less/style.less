@@ -1,0 +1,357 @@
+@primary-color: #26A69A;
+@secondary-color: #004D40;
+@tertiary-color: #B2DFDB;
+
+@light-text-color: #F2F2F2;
+@dark-text-color: #004D44;
+
+body {
+  background-color: @primary-color;
+  margin: 16px 0 200px 0;
+}
+
+.rounded-button {
+  border: 5px @dark-text-color solid;
+  border-radius: 200px;
+  background-color: @tertiary-color;
+}
+
+#game-turn-display {
+  .rounded-button;
+  display: inline-block;
+  font-size: 19px;
+  font-family: "Roboto Light", sans-serif;
+  color: @dark-text-color;
+  text-align: center;
+  padding: 8px 16px;
+  margin: 4px;
+}
+
+.score-field {
+  color: @light-text-color;
+
+  .score-title {
+    position: relative;
+    bottom: 5px;
+    display: inline-block;
+    font-family: "Roboto Thin", sans-serif;
+    font-size: 25px;
+    margin: 0 10px 0 0;
+    padding: 0;
+  }
+
+  .score-element {
+    display: inline-block;
+    margin: 0 10px 0 0;
+
+    .score-value {
+      font-family: "Roboto Thin", sans-serif;        
+      font-size: 16px;
+      text-align: left;
+      margin: 0;
+      padding: 0;
+    }
+
+    .score-player-name {
+      font-family: "Roboto Light", sans-serif;        
+      font-size: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+  }
+}
+
+
+.game-result-display-container {
+  position: absolute;
+  display: none;
+  top: 30vh;
+  z-index: 1;
+  
+  height: 68px;
+  // width: 80vw;
+  // min-width: 190px;
+  // max-width: 300px;
+  overflow: hidden;
+
+  .game-result-display-bg {
+    
+    height: 65px;
+    // width: 80vw;
+    // min-width: 190px;
+    // max-width: 300px;
+    width: 100vw;
+
+    position: absolute;
+    z-index: 2;
+    filter: blur(11px) opacity(80%);
+
+    background-color: #C5F7F3;
+  }
+}
+
+.game-result-display {
+  z-index: 4;
+  position: relative;
+  width: 100vw;
+  height: 64px;
+
+  color: #004D44;
+  font-size: 50px;
+  border: 2px #004D44;
+  border-style: solid none solid none;
+  font-family: "Roboto Light", sans-serif;
+}
+
+.game-field {
+  background-color: @secondary-color;
+  box-shadow: 0 0 10px rgba(0,0,0,.20);
+
+  width: 80vw;
+  min-width: 190px;
+  max-width: 300px;
+
+  height: 80vw;
+  min-height: 190px;
+  max-height: 300px;
+
+  border-radius: 20px;
+  margin: 10px auto;
+  
+
+  button {
+    cursor: pointer;
+    outline: none !important;
+    position: relative;
+    float: left;
+    top: 3.5%;
+    left: 3.5%;
+
+    font-size: 20vw;
+    @media only screen and (min-width: 375px) {
+      font-size: 80px;
+    }
+    
+    line-height: 40px;
+    font-family: "Roboto", sans-serif;
+    color: @dark-text-color;
+
+    width: 31%;
+    height: 31%;
+    background: @tertiary-color;
+    border-color: #00796B;
+    border-width: 4px;
+  }
+
+  #grid-1 { border-style: none solid solid none; border-radius: 8px 0 0 0; }
+  #grid-2 { border-style: none solid solid solid; }
+  #grid-3 { border-style: none none solid solid; border-radius: 0 8px 0 0;}
+
+  #grid-4 { border-style: solid solid solid none; }
+  #grid-5 { border-style: solid; }
+  #grid-6 { border-style: solid none solid solid; }
+
+  #grid-7 { border-style: solid solid none none; border-radius: 0 0 0 8px; }
+  #grid-8 { border-style: solid solid none solid; }
+  #grid-9 { border-style: solid none none solid; border-radius: 0 0 8px 0; }
+
+}
+
+.action-button-field {
+  button{
+    .rounded-button;
+    outline: none !important;
+    cursor: pointer;
+    font-size: 19px;
+    font-family: "Roboto Light", sans-serif;
+    color: @dark-text-color;
+    text-align: center;
+    padding: 8px 16px;
+    margin: 4px;
+
+    i {
+      color: #00796B;
+      margin-right: 6px;
+      font-size: 25px;
+      vertical-align: middle;
+    }
+  };
+}
+
+.game-settings-field {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  margin: 8px 0;
+  padding: 16px 0;
+  background-color: #7DC7C0;
+
+  #switch-player-mode {
+    @option-one: "1 Player";
+    @option-two: "2 Players";
+    @font-size: 20px;
+    @width: 250px;
+    @height: 54px;
+    @font-family: "Roboto Light", sans-serif;
+
+    input {display:none;}
+
+    position: relative;
+    display: inline-block;
+    width: @width;
+    height: @height;
+
+    .slider {
+      cursor: pointer;
+      position: absolute;
+      left: 0; right: 0; top: 0; bottom: 0;
+      transition: .1s;
+
+      border: 4px @secondary-color solid;
+      border-radius: 34px;
+      box-shadow: 0 0 10px rgba(0,0,0,.20) inset;
+      background-color: @tertiary-color;
+      color: black;
+      font-size: @font-size;
+      font-family: @font-family;
+    }
+
+    .slider:before {
+      position: absolute;
+      bottom: 5px;
+      right: @width - 129px;
+      content: @option-one;
+      padding: 6px 12px;
+      display: inline-block;
+      width: 90px;
+
+      background-color: #00796B;
+      color: @light-text-color;
+      transition: .1s;
+      border-radius: 30px;
+    }
+
+    input:checked + .slider:before {
+      box-shadow: 0 0 10px rgba(0,0,0,.20);
+      content: @option-two;
+      right: 7px;
+    }
+
+    .other-option {
+      color: @dark-text-color;
+      font-size: @font-size;
+      font-family: @font-family;
+      width: 100px;
+      background:back;
+    }
+
+    .slider:after {
+      .other-option;
+      content: @option-two;
+      position: absolute;
+      transform: translate(-50%,-50%);
+      top: 50%;
+      left: 75%;
+    }
+
+    input:checked + .slider:after{
+      .other-option;
+      content: @option-one;
+      top: 50%;
+      left: 22%;
+    }
+  }
+  
+  #player-one-type-switch-group {
+    display: inline-block;
+    margin-top: 10px;
+
+    #switch-player-one-type-title {
+      display: inline-block;
+      vertical-align: middle;
+      color: @dark-text-color;
+      font-family: "Roboto", sans-serif;
+      font-size: 19px;
+      margin-right: 10px;
+    }
+
+    #switch-player-one-type {
+      vertical-align: middle;
+      @option-one: "X's";
+      @option-two: "O's";
+      @font-size: 20px;
+      @width: 125px;
+      @height: 54px;
+      @font-family: "Roboto Light", sans-serif;
+
+      input {display:none;}
+
+      position: relative;
+      display: inline-block;
+      width: @width;
+      height: @height;
+
+      .slider {
+        cursor: pointer;
+        position: absolute;
+        left: 0; right: 0; top: 0; bottom: 0;
+        transition: .1s;
+
+        border: 4px @secondary-color solid;
+        border-radius: 34px;
+        box-shadow: 0 0 10px rgba(0,0,0,.20) inset;
+        background-color: @tertiary-color;
+        color: black;
+        font-size: @font-size;
+        font-family: @font-family;
+      }
+
+      .slider:before {
+        position: absolute;
+        bottom: 5px;
+        right: @width - 67px;
+        content: @option-one;
+        padding: 6px 12px;
+        display: inline-block;
+        width: 28px;
+
+        background-color: #00796B;
+        color: @light-text-color;
+        transition: .1s;
+        border-radius: 30px;
+      }
+
+      input:checked + .slider:before {
+        box-shadow: 0 0 10px rgba(0,0,0,.20);
+        content: @option-two;
+        right: 7px;
+      }
+
+      .other-option {
+        color: @dark-text-color;
+        font-size: @font-size;
+        font-family: @font-family;
+        width: 100px;
+        background:back;
+      }
+
+      .slider:after {
+        .other-option;
+        content: @option-two;
+        position: absolute;
+        transform: translate(-50%,-50%);
+        top: 50%;
+        left: 75%;
+      }
+
+      input:checked + .slider:after{
+        .other-option;
+        content: @option-one;
+        top: 50%;
+        left: 22%;
+      }
+    }
+
+  }
+}
